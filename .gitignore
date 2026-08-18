@@ -1,0 +1,61 @@
+# Databricks / Spark
+.databricks/
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.python-version
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Local data / exports
+data/
+*.csv
+*.parquet
+*.json
+*.xlsx
+
+# Secrets / environment variables
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# Build / package artifacts
+build/
+dist/
+*.egg-info/
+
+# Coverage / test artifacts
+.coverage
+htmlcov/
+.pytest_cache/
