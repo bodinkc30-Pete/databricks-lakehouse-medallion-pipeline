@@ -19,6 +19,7 @@ flowchart TD
     F1[Data Quality<br/>workspace.gold.data_quality_summary]
     F2[Monitoring / Audit<br/>workspace.gold.pipeline_run_audit]
     F3[Troubleshooting<br/>Failure + Recovery Evidence]
+    F4[Reliability / Controlled Failure Testing<br/>Schema Drift / Idempotency / NULL Thresholds<br/>Late Data / Watermark / RI / Business Rules]
 
     G[Performance Tuning<br/>Shuffle / Data Skew / Broadcast Join<br/>Repartition / Small Files<br/>OPTIMIZE / Data Skipping / Photon]
 
@@ -36,7 +37,13 @@ flowchart TD
 
     C --> F1
     D1 --> F2
+
+    D1 --> F4
+    D2 --> F4
+    F1 --> F4
+
     F2 --> F3
+    F4 --> F3
 
     D1 --> G
     D2 --> G
