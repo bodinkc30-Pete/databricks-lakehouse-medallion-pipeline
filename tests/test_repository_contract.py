@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 import re
 import unittest
 
@@ -16,6 +16,7 @@ class RepositoryContractTests(unittest.TestCase):
             "docs/screenshots/data-quality/data_quality_summary.png",
             "docs/screenshots/reliability/reliability_test_executive_summary.png",
             "docs/screenshots/performance/performance_improvement_summary.png",
+            "docs/screenshots/ci/github_actions_success.png",
         ]
         missing = [path for path in required if not (ROOT / path).exists()]
         self.assertEqual(missing, [], f"Missing portfolio evidence: {missing}")

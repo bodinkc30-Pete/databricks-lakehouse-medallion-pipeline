@@ -23,7 +23,7 @@ The project covers ingestion, schema handling, incremental processing / CDC, SCD
 | Troubleshooting | [`notebooks/01_spark_foundation.py`](notebooks/01_spark_foundation.py) | [Failure evidence](docs/screenshots/troubleshooting/read_source_failure.png) |
 | Reliability testing | [`notebooks/01_spark_foundation.py`](notebooks/01_spark_foundation.py) | [7/7 executive summary](docs/screenshots/reliability/reliability_test_executive_summary.png) |
 | Performance tuning | [`notebooks/01_spark_foundation.py`](notebooks/01_spark_foundation.py) | [Before/after summary](docs/screenshots/performance/performance_improvement_summary.png) |
-| CI / automated repository validation | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | [`tests/test_repository_contract.py`](tests/test_repository_contract.py) |
+| CI / automated repository validation | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) + [`tests/test_repository_contract.py`](tests/test_repository_contract.py) | [GitHub Actions SUCCESS](docs/screenshots/ci/github_actions_success.png) |
 
 **Engineering lifecycle**
 
@@ -674,6 +674,7 @@ databricks-lakehouse-medallion-pipeline/
 | Range / business-rule validation | `lab07_range_business_rule.png` |
 | Performance benchmark | `performance_benchmark.png` |
 | Performance improvements | `performance_improvement_summary.png` |
+| GitHub Actions CI success | `github_actions_success.png` |
 | Hash partitioning plan | `01_shuffle_hashpartitioning_16.png` |
 | Single partition exchange | `02_shuffle_single_partition.png` |
 | Executor broadcast | `03_executor_broadcast.png` |
