@@ -1,0 +1,33 @@
+﻿name: Project 07 CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  repository-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile exported Databricks notebook
+        run: python -m py_compile notebooks/01_spark_foundation.py
+
+      - name: Run repository contract tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Show tracked Data Engineering source
+        run: |
+          git ls-files '*.py' '*.sql' '.gitattributes'

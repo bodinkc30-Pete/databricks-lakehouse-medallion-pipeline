@@ -9796,7 +9796,9 @@ clean_benchmark_df = (
 display(
     spark.table(benchmark_table)
     .filter("experiment_name = 'data_skipping'")
-)import time
+)
+
+import time
 from pyspark.sql import functions as F
 
 source_table = "workspace.gold.fact_order_lines"
@@ -9818,7 +9820,9 @@ baseline_rows = base_df.count()
 baseline_seconds = time.perf_counter() - start
 
 print("baseline rows:", baseline_rows)
-print("baseline runtime seconds:", round(baseline_seconds, 3))import time
+print("baseline runtime seconds:", round(baseline_seconds, 3))
+
+import time
 from pyspark.sql import functions as F
 
 source_table = "workspace.gold.fact_order_lines"

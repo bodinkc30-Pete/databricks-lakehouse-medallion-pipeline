@@ -1,10 +1,37 @@
 # Databricks Lakehouse Medallion Pipeline
 
+[![Project 07 CI](https://github.com/bodinkc30-Pete/databricks-lakehouse-medallion-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/bodinkc30-Pete/databricks-lakehouse-medallion-pipeline/actions/workflows/ci.yml)
+
 Portfolio-grade Data Engineering project using **Apache Spark, PySpark, Spark SQL, Databricks, Delta Lake, Unity Catalog, and Photon**.
 
 **E-commerce Orders CSV → Bronze → Silver → Gold**
 
 The project covers ingestion, schema handling, incremental processing / CDC, SCD Type 2 recovery, data quality, reliability and controlled-failure testing, monitoring, troubleshooting, and Spark performance tuning with measured evidence.
+
+---
+
+## Recruiter Quick Evidence
+
+| Capability | Implementation | Execution evidence |
+|---|---|---|
+| Apache Spark / PySpark | [`notebooks/01_spark_foundation.py`](notebooks/01_spark_foundation.py) | [Bronze ingestion](docs/screenshots/bronze/bronze_ingestion.png) |
+| Spark SQL / Delta MERGE | [`sql/01_incremental_merge.sql`](sql/01_incremental_merge.sql) | [Incremental changes](docs/screenshots/incremental/cdf_incremental_changes.png) |
+| CDC / Watermark / Checkpoint | [`sql/02_cdc_watermark.sql`](sql/02_cdc_watermark.sql) | [Checkpoint decision](docs/screenshots/incremental/cdf_checkpoint_decision.png) |
+| SCD Type 2 / Recovery | [`notebooks/01_spark_foundation.py`](notebooks/01_spark_foundation.py) | [SCD2 recovery](docs/screenshots/scd2/scd2_recovery.png) |
+| Data Quality | [`notebooks/01_spark_foundation.py`](notebooks/01_spark_foundation.py) | [DQ summary](docs/screenshots/data-quality/data_quality_summary.png) |
+| Monitoring / Audit | [`sql/03_monitoring_audit.sql`](sql/03_monitoring_audit.sql) | [Pipeline success](docs/screenshots/monitoring/pipeline_success.png) |
+| Troubleshooting | [`notebooks/01_spark_foundation.py`](notebooks/01_spark_foundation.py) | [Failure evidence](docs/screenshots/troubleshooting/read_source_failure.png) |
+| Reliability testing | [`notebooks/01_spark_foundation.py`](notebooks/01_spark_foundation.py) | [7/7 executive summary](docs/screenshots/reliability/reliability_test_executive_summary.png) |
+| Performance tuning | [`notebooks/01_spark_foundation.py`](notebooks/01_spark_foundation.py) | [Before/after summary](docs/screenshots/performance/performance_improvement_summary.png) |
+| CI / automated repository validation | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | [`tests/test_repository_contract.py`](tests/test_repository_contract.py) |
+
+**Engineering lifecycle**
+
+`DESIGN -> BUILD -> RUN -> TEST -> BREAK -> DETECT -> DIAGNOSE -> FIX -> RECOVER -> VERIFY -> OPTIMIZE -> CAPTURE EVIDENCE`
+
+**Engineering truths used in this project**
+
+`Pipeline SUCCESS != Data Quality PASS` · `Retry != Idempotency` · `Schema accepted != Data correct` · `Fast job != Efficient job` · `Code exists != Evidence exists`
 
 ---
 
@@ -594,16 +621,21 @@ The query is fully supported by Photon.
 
 ```text
 databricks-lakehouse-medallion-pipeline/
-│
 ├── README.md
+├── .gitattributes
 ├── .gitignore
+├── .github/workflows/ci.yml
 ├── notebooks/
 │   └── 01_spark_foundation.py
-├── src/
 ├── sql/
+│   ├── 01_incremental_merge.sql
+│   ├── 02_cdc_watermark.sql
+│   └── 03_monitoring_audit.sql
+├── tests/
+│   └── test_repository_contract.py
+├── src/
 └── docs/
-    ├── architecture/
-    │   └── lakehouse_architecture.md
+    ├── architecture/lakehouse_architecture.md
     └── screenshots/
         ├── bronze/
         ├── silver/
@@ -615,14 +647,6 @@ databricks-lakehouse-medallion-pipeline/
         ├── troubleshooting/
         ├── performance/
         └── reliability/
-            ├── reliability_test_executive_summary.png
-            ├── lab01_schema_drift.png
-            ├── lab02_idempotency_delta_merge.png
-            ├── lab03_null_spike_dq_threshold.png
-            ├── lab04_late_arriving_data.png
-            ├── lab05_bad_watermark.png
-            ├── lab06_referential_integrity.png
-            └── lab07_range_business_rule.png
 ```
 
 ---
