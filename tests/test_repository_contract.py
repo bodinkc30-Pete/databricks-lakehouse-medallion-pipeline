@@ -16,6 +16,7 @@ class RepositoryContractTests(unittest.TestCase):
             "docs/screenshots/data-quality/data_quality_summary.png",
             "docs/screenshots/reliability/reliability_test_executive_summary.png",
             "docs/screenshots/performance/performance_improvement_summary.png",
+            "docs/screenshots/performance/04_photon_broadcast_hash_join.png",
             "docs/screenshots/ci/github_actions_success.png",
         ]
         missing = [path for path in required if not (ROOT / path).exists()]
@@ -36,6 +37,20 @@ class RepositoryContractTests(unittest.TestCase):
         local_links = [x.split("#", 1)[0] for x in links if not x.startswith(("http://", "https://"))]
         missing = sorted({x for x in local_links if x and not (ROOT / x).exists()})
         self.assertEqual(missing, [], f"Broken README links: {missing}")
+
+    def test_readme_platform_identity_is_visible_near_top(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        top = "\n".join(readme.splitlines()[:90])
+        for token in (
+            "Databricks Lakehouse",
+            "Apache Spark",
+            "PySpark",
+            "Spark SQL",
+            "Delta Lake",
+            "Unity Catalog",
+            "Databricks / Spark Execution Evidence",
+        ):
+            self.assertIn(token, top)
 
     def test_no_obvious_secrets_in_text_sources(self):
         patterns = [

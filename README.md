@@ -1,12 +1,38 @@
 # Databricks Lakehouse Medallion Pipeline
 
 [![Project 07 CI](https://github.com/bodinkc30-Pete/databricks-lakehouse-medallion-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/bodinkc30-Pete/databricks-lakehouse-medallion-pipeline/actions/workflows/ci.yml)
+![Databricks](https://img.shields.io/badge/Databricks-Lakehouse-EF3E3E?logo=databricks&logoColor=white)
+![Apache Spark](https://img.shields.io/badge/Apache%20Spark-Compute-E25A1C?logo=apachespark&logoColor=white)
+![PySpark](https://img.shields.io/badge/PySpark-Python%20API-3776AB?logo=python&logoColor=white)
+![Spark SQL](https://img.shields.io/badge/Spark%20SQL-SQL-4479A1)
+![Delta Lake](https://img.shields.io/badge/Delta%20Lake-ACID%20Tables-00ADD8)
+![Unity Catalog](https://img.shields.io/badge/Unity%20Catalog-Governance-6C63FF)
 
-Portfolio-grade Data Engineering project using **Apache Spark, PySpark, Spark SQL, Databricks, Delta Lake, Unity Catalog, and Photon**.
+**Production-style Databricks Lakehouse data engineering project built on Apache Spark.**
 
-**E-commerce Orders CSV → Bronze → Silver → Gold**
+**E-commerce Orders CSV → Bronze → Silver → Gold → CDC / SCD2 / DQ / Monitoring / Reliability / Performance Tuning**
 
-The project covers ingestion, schema handling, incremental processing / CDC, SCD Type 2 recovery, data quality, reliability and controlled-failure testing, monitoring, troubleshooting, and Spark performance tuning with measured evidence.
+| Platform identity | Technology used in this repository |
+|---|---|
+| Lakehouse platform | **Databricks** |
+| Distributed compute engine | **Apache Spark** |
+| Data engineering APIs | **PySpark + Spark SQL** |
+| Table/storage layer | **Delta Lake** |
+| Governance/catalog | **Unity Catalog** |
+| Data architecture | **Medallion: Bronze → Silver → Gold** |
+
+> **GitHub Languages note:** PySpark source is counted as **Python** and Spark SQL source is counted as **SQL**. Databricks, Apache Spark, Delta Lake, and Unity Catalog are platform/framework technologies, so they are proven here through implementation, architecture, execution output, and screenshots rather than the Languages bar.
+
+### Databricks / Spark Execution Evidence
+
+<p align="center">
+  <a href="docs/screenshots/bronze/bronze_ingestion.png"><img src="docs/screenshots/bronze/bronze_ingestion.png" width="48%" alt="Databricks Bronze ingestion evidence"></a>
+  <a href="docs/screenshots/performance/04_photon_broadcast_hash_join.png"><img src="docs/screenshots/performance/04_photon_broadcast_hash_join.png" width="48%" alt="Apache Spark and Photon physical plan evidence"></a>
+</p>
+
+**Left:** Databricks Bronze ingestion and Delta table execution evidence.
+
+**Right:** Apache Spark physical-plan evidence showing a Photon-supported broadcast hash join.
 
 ---
 
