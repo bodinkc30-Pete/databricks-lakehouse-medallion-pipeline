@@ -1,0 +1,23 @@
+{
+    "evidence_type":  "Databricks SQL Statement Execution result",
+    "source":  "workspace.project07_sandbox",
+    "query_file":  "sql/04_gold_star_schema_reconciliation.sql",
+    "statement_id":  "01f1ddd4-bae5-19d8-93cd-6ed2be94f3b4",
+    "status":  "SUCCEEDED",
+    "verified_at_utc":  "2026-11-11T13:38:18.3203688Z",
+    "validation_passed":  true,
+    "results":  {
+                    "fact_line_rows":  "5249",
+                    "fact_order_rows":  "5249",
+                    "dim_sku_rows":  "53",
+                    "dim_product_rows":  "53",
+                    "dim_date_rows":  "5",
+                    "total_units":  "13122",
+                    "total_source_amount":  "5246000.00",
+                    "order_source_amount":  "5246000.00",
+                    "missing_sku_fk":  "0",
+                    "missing_product_fk":  "0",
+                    "missing_date_fk":  "0",
+                    "missing_order_fk":  "0"
+                }
+}
