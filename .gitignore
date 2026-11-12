@@ -74,3 +74,6 @@ htmlcov/
 
 # Sanitized verified synthetic P5 crash/recovery Databricks evidence only.
 !docs/evidence/p5_crash_after_merge_recovery_validated.json
+
+# Verified sanitized Lab02 Databricks-only state-machine evidence.
+!docs/evidence/p6_crash_after_watermark_state_machine_validated.json

@@ -1,0 +1,304 @@
+{
+    "project":  "Project 07 Databricks Lakehouse",
+    "exercise":  "Failure Recovery Lab 02 - after committed Watermark, before Completion Audit",
+    "validation_passed":  true,
+    "verified_at_utc":  "2026-11-12T13:53:22.3739825Z",
+    "environment":  "real Databricks Serverless using synthetic-only isolated sandbox tables",
+    "job_id":  "801712658874292",
+    "failure_marker":  "P6_INJECTED_CRASH_AFTER_WATERMARK",
+    "job_runs":  [
+                     {
+                         "mode":  "inject_crash",
+                         "run_id":  "1098545242963842",
+                         "result":  "FAILED",
+                         "duration_ms":  110433,
+                         "tasks":  [
+                                       {
+                                           "task_key":  "p6_state_machine_recovery",
+                                           "task_run_id":  "1100536127525643",
+                                           "lifecycle":  "TERMINATED",
+                                           "result":  "FAILED"
+                                       },
+                                       {
+                                           "task_key":  "p6_state_machine_recovery",
+                                           "task_run_id":  "641876578258133",
+                                           "lifecycle":  "TERMINATED",
+                                           "result":  "FAILED"
+                                       }
+                                   ]
+                     },
+                     {
+                         "mode":  "recover",
+                         "run_id":  "403730340887020",
+                         "result":  "SUCCESS",
+                         "duration_ms":  50059,
+                         "tasks":  [
+                                       {
+                                           "task_key":  "p6_state_machine_recovery",
+                                           "task_run_id":  "297038171834318",
+                                           "lifecycle":  "TERMINATED",
+                                           "result":  "SUCCESS"
+                                       }
+                                   ]
+                     },
+                     {
+                         "mode":  "replay",
+                         "run_id":  "1101277758854035",
+                         "result":  "SUCCESS",
+                         "duration_ms":  48502,
+                         "tasks":  [
+                                       {
+                                           "task_key":  "p6_state_machine_recovery",
+                                           "task_run_id":  "64345804257707",
+                                           "lifecycle":  "TERMINATED",
+                                           "result":  "SUCCESS"
+                                       }
+                                   ]
+                     }
+                 ],
+    "sql_evidence":  [
+                         {
+                             "stage":  "after_crash",
+                             "statement_id":  "01f1de9f-5095-1639-8219-927d87ed418f",
+                             "result":  {
+                                            "target_rows":  "5277",
+                                            "unique_keys":  "5277",
+                                            "units":  "13200",
+                                            "source_amount":  "5275100.00",
+                                            "applied_batch_rows":  "4",
+                                            "watermark_rows":  "1",
+                                            "watermark_ts":  "2026-02-04T00:00:00.000Z",
+                                            "watermark_batch_id":  "p6_incremental_20260204",
+                                            "completed_batch_rows":  "0",
+                                            "completed_by_attempt":  null,
+                                            "state_event_rows":  "4",
+                                            "state_attempts":  "1",
+                                            "started_events":  "1",
+                                            "merged_events":  "1",
+                                            "checkpointed_events":  "1",
+                                            "failed_events":  "1",
+                                            "completed_events":  "0",
+                                            "unsafe_completions":  "0",
+                                            "most_recent_state":  "FAILED",
+                                            "most_recent_mode":  "inject_crash",
+                                            "original_gold_snapshot":  "p3_v2_valid",
+                                            "original_gold_version":  "2",
+                                            "original_gold_rows":  "5269",
+                                            "original_gold_units":  "13176"
+                                        }
+                         },
+                         {
+                             "stage":  "after_recovery",
+                             "statement_id":  "01f1de9f-9c0f-1e8b-8e23-c982313e2eec",
+                             "result":  {
+                                            "target_rows":  "5277",
+                                            "unique_keys":  "5277",
+                                            "units":  "13200",
+                                            "source_amount":  "5275100.00",
+                                            "applied_batch_rows":  "4",
+                                            "watermark_rows":  "1",
+                                            "watermark_ts":  "2026-02-04T00:00:00.000Z",
+                                            "watermark_batch_id":  "p6_incremental_20260204",
+                                            "completed_batch_rows":  "1",
+                                            "completed_by_attempt":  "675ae0e0-4b51-42a6-aa39-b47d222ad1ac",
+                                            "state_event_rows":  "8",
+                                            "state_attempts":  "2",
+                                            "started_events":  "2",
+                                            "merged_events":  "2",
+                                            "checkpointed_events":  "2",
+                                            "failed_events":  "1",
+                                            "completed_events":  "1",
+                                            "unsafe_completions":  "0",
+                                            "most_recent_state":  "COMPLETED",
+                                            "most_recent_mode":  "recover",
+                                            "original_gold_snapshot":  "p3_v2_valid",
+                                            "original_gold_version":  "2",
+                                            "original_gold_rows":  "5269",
+                                            "original_gold_units":  "13176"
+                                        }
+                         },
+                         {
+                             "stage":  "after_replay",
+                             "statement_id":  "01f1de9f-dc8f-1019-8a7d-8f632ea153f1",
+                             "result":  {
+                                            "target_rows":  "5277",
+                                            "unique_keys":  "5277",
+                                            "units":  "13200",
+                                            "source_amount":  "5275100.00",
+                                            "applied_batch_rows":  "4",
+                                            "watermark_rows":  "1",
+                                            "watermark_ts":  "2026-02-04T00:00:00.000Z",
+                                            "watermark_batch_id":  "p6_incremental_20260204",
+                                            "completed_batch_rows":  "1",
+                                            "completed_by_attempt":  "675ae0e0-4b51-42a6-aa39-b47d222ad1ac",
+                                            "state_event_rows":  "12",
+                                            "state_attempts":  "3",
+                                            "started_events":  "3",
+                                            "merged_events":  "3",
+                                            "checkpointed_events":  "3",
+                                            "failed_events":  "1",
+                                            "completed_events":  "2",
+                                            "unsafe_completions":  "0",
+                                            "most_recent_state":  "COMPLETED",
+                                            "most_recent_mode":  "replay",
+                                            "original_gold_snapshot":  "p3_v2_valid",
+                                            "original_gold_version":  "2",
+                                            "original_gold_rows":  "5269",
+                                            "original_gold_units":  "13176"
+                                        }
+                         }
+                     ],
+    "delta_history":  {
+                          "p6_recovery_target":  {
+                                                     "statement_id":  "01f1dea0-12b3-1344-8850-3db1c5d5bdeb",
+                                                     "merges":  [
+                                                                    {
+                                                                        "version":  1,
+                                                                        "timestamp":  "2026-11-12T13:43:45.000Z",
+                                                                        "operation":  "MERGE",
+                                                                        "inserted":  3,
+                                                                        "updated":  1,
+                                                                        "files_added":  4,
+                                                                        "files_removed":  0,
+                                                                        "source_rows":  4
+                                                                    },
+                                                                    {
+                                                                        "version":  2,
+                                                                        "timestamp":  "2026-11-12T13:46:41.000Z",
+                                                                        "operation":  "MERGE",
+                                                                        "inserted":  0,
+                                                                        "updated":  0,
+                                                                        "files_added":  0,
+                                                                        "files_removed":  0,
+                                                                        "source_rows":  4
+                                                                    },
+                                                                    {
+                                                                        "version":  3,
+                                                                        "timestamp":  "2026-11-12T13:48:29.000Z",
+                                                                        "operation":  "MERGE",
+                                                                        "inserted":  0,
+                                                                        "updated":  0,
+                                                                        "files_added":  0,
+                                                                        "files_removed":  0,
+                                                                        "source_rows":  4
+                                                                    }
+                                                                ]
+                                                 },
+                          "p6_recovery_watermark":  {
+                                                        "statement_id":  "01f1dea0-142d-1cec-a3e3-cf4bc03932ba",
+                                                        "merges":  [
+                                                                       {
+                                                                           "version":  1,
+                                                                           "timestamp":  "2026-11-12T13:43:23.000Z",
+                                                                           "operation":  "MERGE",
+                                                                           "inserted":  1,
+                                                                           "updated":  0,
+                                                                           "files_added":  1,
+                                                                           "files_removed":  0,
+                                                                           "source_rows":  1
+                                                                       },
+                                                                       {
+                                                                           "version":  2,
+                                                                           "timestamp":  "2026-11-12T13:43:52.000Z",
+                                                                           "operation":  "MERGE",
+                                                                           "inserted":  0,
+                                                                           "updated":  1,
+                                                                           "files_added":  1,
+                                                                           "files_removed":  1,
+                                                                           "source_rows":  1
+                                                                       },
+                                                                       {
+                                                                           "version":  3,
+                                                                           "timestamp":  "2026-11-12T13:44:21.000Z",
+                                                                           "operation":  "MERGE",
+                                                                           "inserted":  0,
+                                                                           "updated":  0,
+                                                                           "files_added":  0,
+                                                                           "files_removed":  0,
+                                                                           "source_rows":  0
+                                                                       },
+                                                                       {
+                                                                           "version":  4,
+                                                                           "timestamp":  "2026-11-12T13:46:25.000Z",
+                                                                           "operation":  "MERGE",
+                                                                           "inserted":  0,
+                                                                           "updated":  0,
+                                                                           "files_added":  0,
+                                                                           "files_removed":  0,
+                                                                           "source_rows":  0
+                                                                       },
+                                                                       {
+                                                                           "version":  5,
+                                                                           "timestamp":  "2026-11-12T13:46:47.000Z",
+                                                                           "operation":  "MERGE",
+                                                                           "inserted":  0,
+                                                                           "updated":  0,
+                                                                           "files_added":  0,
+                                                                           "files_removed":  0,
+                                                                           "source_rows":  1
+                                                                       },
+                                                                       {
+                                                                           "version":  6,
+                                                                           "timestamp":  "2026-11-12T13:48:14.000Z",
+                                                                           "operation":  "MERGE",
+                                                                           "inserted":  0,
+                                                                           "updated":  0,
+                                                                           "files_added":  0,
+                                                                           "files_removed":  0,
+                                                                           "source_rows":  0
+                                                                       },
+                                                                       {
+                                                                           "version":  7,
+                                                                           "timestamp":  "2026-11-12T13:48:35.000Z",
+                                                                           "operation":  "MERGE",
+                                                                           "inserted":  0,
+                                                                           "updated":  0,
+                                                                           "files_added":  0,
+                                                                           "files_removed":  0,
+                                                                           "source_rows":  1
+                                                                       }
+                                                                   ]
+                                                    },
+                          "p6_completion_audit":  {
+                                                      "statement_id":  "01f1dea0-15a1-1bec-ab59-1046c77135c0",
+                                                      "merges":  [
+                                                                     {
+                                                                         "version":  1,
+                                                                         "timestamp":  "2026-11-12T13:46:52.000Z",
+                                                                         "operation":  "MERGE",
+                                                                         "inserted":  1,
+                                                                         "updated":  0,
+                                                                         "files_added":  1,
+                                                                         "files_removed":  0,
+                                                                         "source_rows":  1
+                                                                     },
+                                                                     {
+                                                                         "version":  2,
+                                                                         "timestamp":  "2026-11-12T13:48:40.000Z",
+                                                                         "operation":  "MERGE",
+                                                                         "inserted":  0,
+                                                                         "updated":  0,
+                                                                         "files_added":  0,
+                                                                         "files_removed":  0,
+                                                                         "source_rows":  0
+                                                                     }
+                                                                 ]
+                                                  }
+                      },
+    "final_rows":  5277,
+    "final_distinct_keys":  5277,
+    "final_units":  13200,
+    "final_source_amount":  "5275100.00",
+    "final_completion_audit_batch_rows":  1,
+    "state_transition_events":  12,
+    "gold_snapshot_unchanged":  "p3_v2_valid",
+    "limitations":  [
+                        "An intentionally raised RuntimeError after both Delta and watermark transactions, not a real computer or cloud cluster failure",
+                        "The FAILED event is persisted immediately before raising; a genuine hard crash may leave CHECKPOINTED as the last status",
+                        "State transitions are separate Delta appends; no atomic multi-table commit is claimed",
+                        "Recovery and replay were triggered manually, not by an automatic scheduling or incident agent",
+                        "The failed Databricks Job was attempted twice by the platform; the retry was blocked by the not-pristine state safeguard",
+                        "Gold was read only, not published from P6; original Phase 1-5 tables were not modified",
+                        "Synthetic source amount across all order statuses is not recognized revenue"
+                    ]
+}
