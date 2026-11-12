@@ -65,3 +65,6 @@ htmlcov/
 
 # Sanitized, independently validated Phase 2 Databricks-only SQL metrics.
 !docs/evidence/phase2_incremental_merge_validated.json
+
+# Sanitized verified Phase 3 SQL and Job evidence; other JSON remains ignored.
+!docs/evidence/phase3_qa_recovery_publish_validated.json
