@@ -68,3 +68,6 @@ htmlcov/
 
 # Sanitized verified Phase 3 SQL and Job evidence; other JSON remains ignored.
 !docs/evidence/phase3_qa_recovery_publish_validated.json
+
+# Verified, sanitized Phase4 monitoring statement / Jobs evidence.
+!docs/evidence/phase4_monitoring_alert_replay_validated.json

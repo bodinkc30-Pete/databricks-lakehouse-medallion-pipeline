@@ -1,0 +1,79 @@
+{
+    "project":  "Project07 Databricks Lakehouse",
+    "stage":  "Phase4 Real Job Monitoring + Alert Outbox + Incident Recovery Audit",
+    "environment":  "Real Databricks Free Edition, isolated synthetic metadata",
+    "job_id":  "632149905978914",
+    "sql_statement_id":  "01f1de7e-a647-173d-834c-c0ecaee332cc",
+    "verified_at_utc":  "2026-11-12T09:51:50.8038523Z",
+    "validation_passed":  true,
+    "run_evidence":  [
+                         {
+                             "label":  "initial",
+                             "run_id":  "82586069115397",
+                             "job_result":  "SUCCESS",
+                             "run_duration_ms":  89394,
+                             "tasks":  [
+                                           {
+                                               "task_key":  "p4_monitor_ingest",
+                                               "result":  "SUCCESS",
+                                               "task_run_id":  969806040995629
+                                           },
+                                           {
+                                               "task_key":  "p4_verify_monitoring",
+                                               "result":  "SUCCESS",
+                                               "task_run_id":  606535098113644
+                                           }
+                                       ]
+                         },
+                         {
+                             "label":  "replay",
+                             "run_id":  "1025487527331232",
+                             "job_result":  "SUCCESS",
+                             "run_duration_ms":  53262,
+                             "tasks":  [
+                                           {
+                                               "task_key":  "p4_monitor_ingest",
+                                               "result":  "SUCCESS",
+                                               "task_run_id":  677531587558428
+                                           },
+                                           {
+                                               "task_key":  "p4_verify_monitoring",
+                                               "result":  "SUCCESS",
+                                               "task_run_id":  627997294242229
+                                           }
+                                       ]
+                         }
+                     ],
+    "verified_summary":  {
+                             "monitored_runs":  "4",
+                             "distinct_run_ids":  "4",
+                             "success_runs":  "2",
+                             "failed_runs":  "2",
+                             "slow_runs":  "1",
+                             "total_observed_processed_rows":  "21077",
+                             "max_run_duration_ms":  "86658",
+                             "queued_alerts":  "3",
+                             "distinct_alert_keys":  "3",
+                             "failure_alerts":  "2",
+                             "duration_alerts":  "1",
+                             "undelivered_alerts":  "3",
+                             "incidents":  "2",
+                             "recovered_incidents":  "2",
+                             "open_incidents":  "0",
+                             "monitor_attempts":  "2",
+                             "successful_monitor_attempts":  "2",
+                             "gold_snapshot":  "p3_v2_valid",
+                             "gold_version":  "2",
+                             "gold_rows":  "5269",
+                             "gold_units":  "13176",
+                             "gold_source_amount":  "5265860.00"
+                         },
+    "notes":  [
+                  "4 actual Databricks Phase3 Job runs collected through authenticated API and stored as sanitized JSON metadata",
+                  "Alerts are internal NOT_CONFIGURED records, NOT sent to email or webhook",
+                  "2 failures are intentional Fault Injection cases from Phase3; both were recovered after verified p3_v2_valid publish",
+                  "A 70000 ms duration warning was observed for historical baseline run",
+                  "This is a manually refreshed and executed monitoring proof, not continuous scheduled production monitoring",
+                  "Synthetic data only. No payment, advertising, private customer record, or personally identifying creator name is published"
+              ]
+}
