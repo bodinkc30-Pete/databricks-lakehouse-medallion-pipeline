@@ -62,3 +62,6 @@ htmlcov/
 
 # Sanitized Phase 1 SQL result only; other JSON remains ignored.
 !docs/evidence/phase1_gold_schema_reconciliation_result.json
+
+# Sanitized, independently validated Phase 2 Databricks-only SQL metrics.
+!docs/evidence/phase2_incremental_merge_validated.json

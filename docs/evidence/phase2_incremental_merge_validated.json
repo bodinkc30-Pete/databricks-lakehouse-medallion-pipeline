@@ -1,0 +1,125 @@
+{
+    "project":  "Project07 Databricks Lakehouse",
+    "stage":  "Phase2 Incremental MERGE / Watermark / Idempotent Replay",
+    "environment":  "Databricks Free Edition, isolated synthetic-only sandbox",
+    "job_id":  "631624372226366",
+    "audit_statement_id":  "01f1de68-81ad-11c2-87e8-18ee21032fd0",
+    "delta_history_statement_id":  "01f1de68-cf23-1458-af9e-1d05da7d4a73",
+    "verified_at_utc":  "2026-11-12T07:16:53.8178243Z",
+    "validation_passed":  true,
+    "final_target_rows":  5269,
+    "final_distinct_business_keys":  5269,
+    "final_quantity":  13175,
+    "final_source_order_amount":  "5265850.00",
+    "audit_rows":  [
+                       {
+                           "phase":  "bootstrap",
+                           "batch_id":  "bootstrap_20260201",
+                           "result":  "PASS",
+                           "source_rows":  "5249",
+                           "inserted_rows":  "5249",
+                           "updated_rows":  "0",
+                           "unchanged_rows":  "0",
+                           "target_rows_before":  "0",
+                           "target_rows_after":  "5249",
+                           "target_rows":  "5269",
+                           "distinct_business_keys":  "5269",
+                           "target_units":  "13175",
+                           "target_source_amount":  "5265850.00",
+                           "last_source_updated_at":  "2026-02-02T00:00:00.000Z",
+                           "watermark_rows":  "1"
+                       },
+                       {
+                           "phase":  "delta",
+                           "batch_id":  "incremental_20260202",
+                           "result":  "PASS",
+                           "source_rows":  "23",
+                           "inserted_rows":  "20",
+                           "updated_rows":  "3",
+                           "unchanged_rows":  "0",
+                           "target_rows_before":  "5249",
+                           "target_rows_after":  "5269",
+                           "target_rows":  "5269",
+                           "distinct_business_keys":  "5269",
+                           "target_units":  "13175",
+                           "target_source_amount":  "5265850.00",
+                           "last_source_updated_at":  "2026-02-02T00:00:00.000Z",
+                           "watermark_rows":  "1"
+                       },
+                       {
+                           "phase":  "replay",
+                           "batch_id":  "incremental_20260202",
+                           "result":  "PASS",
+                           "source_rows":  "23",
+                           "inserted_rows":  "0",
+                           "updated_rows":  "0",
+                           "unchanged_rows":  "23",
+                           "target_rows_before":  "5269",
+                           "target_rows_after":  "5269",
+                           "target_rows":  "5269",
+                           "distinct_business_keys":  "5269",
+                           "target_units":  "13175",
+                           "target_source_amount":  "5265850.00",
+                           "last_source_updated_at":  "2026-02-02T00:00:00.000Z",
+                           "watermark_rows":  "1"
+                       }
+                   ],
+    "delta_merge_history":  [
+                                {
+                                    "version":  1,
+                                    "operation":  "MERGE",
+                                    "timestamp":  "2026-11-12T07:09:52.000Z",
+                                    "source_rows":  5249,
+                                    "inserted_rows":  5249,
+                                    "updated_rows":  0,
+                                    "target_files_added":  1,
+                                    "target_files_removed":  0
+                                },
+                                {
+                                    "version":  2,
+                                    "operation":  "MERGE",
+                                    "timestamp":  "2026-11-12T07:11:04.000Z",
+                                    "source_rows":  23,
+                                    "inserted_rows":  20,
+                                    "updated_rows":  3,
+                                    "target_files_added":  5,
+                                    "target_files_removed":  0
+                                },
+                                {
+                                    "version":  3,
+                                    "operation":  "MERGE",
+                                    "timestamp":  "2026-11-12T07:12:26.000Z",
+                                    "source_rows":  23,
+                                    "inserted_rows":  0,
+                                    "updated_rows":  0,
+                                    "target_files_added":  0,
+                                    "target_files_removed":  0
+                                }
+                            ],
+    "run_evidence":  [
+                         {
+                             "phase":  "bootstrap",
+                             "run_id":  "977101493545830",
+                             "result":  "SUCCESS",
+                             "duration_ms":  71411
+                         },
+                         {
+                             "phase":  "delta",
+                             "run_id":  "581957240360086",
+                             "result":  "SUCCESS",
+                             "duration_ms":  40055
+                         },
+                         {
+                             "phase":  "replay",
+                             "run_id":  "521077980962748",
+                             "result":  "SUCCESS",
+                             "duration_ms":  33946
+                         }
+                     ],
+    "notes":  [
+                  "All amounts are from fabricated orders, not recognized business revenue",
+                  "MERGE is atomic per Delta table, but target + watermark + audit are not one cross-table transaction",
+                  "Incremental source changes are fabricated deterministically; no production CDC connector or streaming trigger was used",
+                  "No changes to historical Phase1 Gold/Silver/Bronze tables"
+              ]
+}
