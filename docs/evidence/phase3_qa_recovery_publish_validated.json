@@ -1,0 +1,180 @@
+{
+    "project":  "Project07 Databricks Lakehouse",
+    "phase":  "Phase 3 QA, Failure Injection and Versioned Gold Publish",
+    "scenario":  "synthetic portfolio sandbox, not enterprise production",
+    "job_id":  "824168112776513",
+    "verified_at_utc":  "2026-11-12T08:20:14.4015699Z",
+    "validation_passed":  true,
+    "run_evidence":  [
+                         {
+                             "scenario":  "baseline",
+                             "run_id":  "856548117138939",
+                             "expected_result":  "SUCCESS",
+                             "observed_result":  "SUCCESS",
+                             "duration_ms":  86658,
+                             "tasks":  [
+                                           {
+                                               "task_key":  "p3_stage_snapshot",
+                                               "state":  "TERMINATED",
+                                               "result":  "SUCCESS"
+                                           },
+                                           {
+                                               "task_key":  "p3_quality_gate",
+                                               "state":  "TERMINATED",
+                                               "result":  "SUCCESS"
+                                           },
+                                           {
+                                               "task_key":  "p3_publish_gold",
+                                               "state":  "TERMINATED",
+                                               "result":  "SUCCESS"
+                                           }
+                                       ]
+                         },
+                         {
+                             "scenario":  "fail_duplicate",
+                             "run_id":  "392396837723218",
+                             "expected_result":  "FAILED",
+                             "observed_result":  "FAILED",
+                             "duration_ms":  50979,
+                             "tasks":  [
+                                           {
+                                               "task_key":  "p3_stage_snapshot",
+                                               "state":  "TERMINATED",
+                                               "result":  "SUCCESS"
+                                           },
+                                           {
+                                               "task_key":  "p3_quality_gate",
+                                               "state":  "TERMINATED",
+                                               "result":  "FAILED"
+                                           },
+                                           {
+                                               "task_key":  "p3_quality_gate",
+                                               "state":  "TERMINATED",
+                                               "result":  "FAILED"
+                                           },
+                                           {
+                                               "task_key":  "p3_publish_gold",
+                                               "state":  "SKIPPED",
+                                               "result":  "UPSTREAM_FAILED"
+                                           }
+                                       ]
+                         },
+                         {
+                             "scenario":  "fail_null",
+                             "run_id":  "1116006042981211",
+                             "expected_result":  "FAILED",
+                             "observed_result":  "FAILED",
+                             "duration_ms":  34785,
+                             "tasks":  [
+                                           {
+                                               "task_key":  "p3_stage_snapshot",
+                                               "state":  "TERMINATED",
+                                               "result":  "SUCCESS"
+                                           },
+                                           {
+                                               "task_key":  "p3_quality_gate",
+                                               "state":  "TERMINATED",
+                                               "result":  "FAILED"
+                                           },
+                                           {
+                                               "task_key":  "p3_publish_gold",
+                                               "state":  "SKIPPED",
+                                               "result":  "UPSTREAM_FAILED"
+                                           }
+                                       ]
+                         },
+                         {
+                             "scenario":  "recovery",
+                             "run_id":  "889964702448996",
+                             "expected_result":  "SUCCESS",
+                             "observed_result":  "SUCCESS",
+                             "duration_ms":  50018,
+                             "tasks":  [
+                                           {
+                                               "task_key":  "p3_stage_snapshot",
+                                               "state":  "TERMINATED",
+                                               "result":  "SUCCESS"
+                                           },
+                                           {
+                                               "task_key":  "p3_quality_gate",
+                                               "state":  "TERMINATED",
+                                               "result":  "SUCCESS"
+                                           },
+                                           {
+                                               "task_key":  "p3_publish_gold",
+                                               "state":  "TERMINATED",
+                                               "result":  "SUCCESS"
+                                           }
+                                       ]
+                         }
+                     ],
+    "read_only_sql_evidence":  [
+                                   {
+                                       "label":  "after_duplicate_failure",
+                                       "statement_id":  "01f1de70-622c-1dc6-9c62-44b6ff9de310",
+                                       "verified_snapshot":  "p3_v1",
+                                       "result":  {
+                                                      "active_snapshot_id":  "p3_v1",
+                                                      "active_version":  "1",
+                                                      "manifest_rows":  "5269",
+                                                      "manifest_units":  "13175",
+                                                      "manifest_source_amount":  "5265850.00",
+                                                      "visible_rows":  "5269",
+                                                      "visible_unique_keys":  "5269",
+                                                      "visible_units":  "13175",
+                                                      "visible_source_amount":  "5265850.00",
+                                                      "failed_qa_attempts":  "2",
+                                                      "successful_qa_attempts":  "1",
+                                                      "quarantined_issue_rows":  "2",
+                                                      "successful_publishes":  "1"
+                                                  }
+                                   },
+                                   {
+                                       "label":  "after_null_failure",
+                                       "statement_id":  "01f1de70-9c35-1d54-b348-8f9ab29b37d4",
+                                       "verified_snapshot":  "p3_v1",
+                                       "result":  {
+                                                      "active_snapshot_id":  "p3_v1",
+                                                      "active_version":  "1",
+                                                      "manifest_rows":  "5269",
+                                                      "manifest_units":  "13175",
+                                                      "manifest_source_amount":  "5265850.00",
+                                                      "visible_rows":  "5269",
+                                                      "visible_unique_keys":  "5269",
+                                                      "visible_units":  "13175",
+                                                      "visible_source_amount":  "5265850.00",
+                                                      "failed_qa_attempts":  "3",
+                                                      "successful_qa_attempts":  "1",
+                                                      "quarantined_issue_rows":  "3",
+                                                      "successful_publishes":  "1"
+                                                  }
+                                   },
+                                   {
+                                       "label":  "after_successful_recovery",
+                                       "statement_id":  "01f1de70-db23-1ff9-95d3-c01a0bc9d9d5",
+                                       "verified_snapshot":  "p3_v2_valid",
+                                       "result":  {
+                                                      "active_snapshot_id":  "p3_v2_valid",
+                                                      "active_version":  "2",
+                                                      "manifest_rows":  "5269",
+                                                      "manifest_units":  "13176",
+                                                      "manifest_source_amount":  "5265860.00",
+                                                      "visible_rows":  "5269",
+                                                      "visible_unique_keys":  "5269",
+                                                      "visible_units":  "13176",
+                                                      "visible_source_amount":  "5265860.00",
+                                                      "failed_qa_attempts":  "3",
+                                                      "successful_qa_attempts":  "2",
+                                                      "quarantined_issue_rows":  "3",
+                                                      "successful_publishes":  "2"
+                                                  }
+                                   }
+                               ],
+    "limitations":  [
+                        "Two failed scenarios are deliberate QA rejection tests; result_state FAILED and Gold SKIPPED are expected",
+                        "Some Databricks failed QA tasks retried automatically; audit rows count attempts, not unique failure scenarios",
+                        "Publication pointer switches atomically in a single Delta manifest table; this is NOT a cross-table ACID transaction",
+                        "No external CDC connector, production data, alert delivery or scheduled monitoring is claimed",
+                        "Synthetic source-order amounts are not recognized or realized revenue"
+                    ]
+}
