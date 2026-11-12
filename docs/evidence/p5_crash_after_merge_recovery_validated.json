@@ -1,0 +1,176 @@
+{
+    "project":  "Project07 Databricks Lakehouse",
+    "exercise":  "Crash after committed Delta MERGE, before watermark and completion audit",
+    "environment":  "isolated synthetic sandbox",
+    "verification_time_utc":  "2026-11-12T13:08:56.8678148Z",
+    "validation_passed":  true,
+    "job_id":  "396564470358773",
+    "failed_run_marker":  "P5_INJECTED_CRASH_AFTER_MERGE",
+    "job_runs":  [
+                     {
+                         "mode":  "inject_crash",
+                         "run_id":  "243865497238959",
+                         "job_result":  "FAILED",
+                         "duration_ms":  99293,
+                         "tasks":  [
+                                       {
+                                           "task_key":  "p5_crash_recovery",
+                                           "task_run_id":  "235613372951556",
+                                           "lifecycle":  "TERMINATED",
+                                           "result":  "FAILED"
+                                       },
+                                       {
+                                           "task_key":  "p5_crash_recovery",
+                                           "task_run_id":  "878997190185902",
+                                           "lifecycle":  "TERMINATED",
+                                           "result":  "FAILED"
+                                       }
+                                   ]
+                     },
+                     {
+                         "mode":  "recover",
+                         "run_id":  "626106700853988",
+                         "job_result":  "SUCCESS",
+                         "duration_ms":  37618,
+                         "tasks":  [
+                                       {
+                                           "task_key":  "p5_crash_recovery",
+                                           "task_run_id":  "580871186677584",
+                                           "lifecycle":  "TERMINATED",
+                                           "result":  "SUCCESS"
+                                       }
+                                   ]
+                     },
+                     {
+                         "mode":  "replay",
+                         "run_id":  "708077446402884",
+                         "job_result":  "SUCCESS",
+                         "duration_ms":  37684,
+                         "tasks":  [
+                                       {
+                                           "task_key":  "p5_crash_recovery",
+                                           "task_run_id":  "746841123184757",
+                                           "lifecycle":  "TERMINATED",
+                                           "result":  "SUCCESS"
+                                       }
+                                   ]
+                     }
+                 ],
+    "read_only_sql_reconciliations":  [
+                                          {
+                                              "stage":  "after_injected_crash",
+                                              "statement_id":  "01f1de99-31fa-1c70-8348-d66165e0da37",
+                                              "result":  {
+                                                             "data_rows":  "5274",
+                                                             "distinct_business_keys":  "5274",
+                                                             "total_units":  "13192",
+                                                             "total_source_amount":  "5270890.00",
+                                                             "batch_rows_applied":  "7",
+                                                             "checkpoint_rows":  "1",
+                                                             "last_source_updated_at":  "2026-02-02T00:00:00.000Z",
+                                                             "checkpoint_batch_id":  "p5_initial_checkpoint",
+                                                             "completed_audit_attempts":  "0",
+                                                             "recovered_attempts":  null,
+                                                             "replay_attempts":  null,
+                                                             "non_idempotent_attempts":  null,
+                                                             "historical_gold_snapshot":  "p3_v2_valid",
+                                                             "historical_gold_version":  "2",
+                                                             "historical_gold_rows":  "5269",
+                                                             "historical_gold_units":  "13176",
+                                                             "historical_gold_source_amount":  "5265860.00"
+                                                         }
+                                          },
+                                          {
+                                              "stage":  "after_recovery",
+                                              "statement_id":  "01f1de99-7af2-144f-abe3-b885f2303d4a",
+                                              "result":  {
+                                                             "data_rows":  "5274",
+                                                             "distinct_business_keys":  "5274",
+                                                             "total_units":  "13192",
+                                                             "total_source_amount":  "5270890.00",
+                                                             "batch_rows_applied":  "7",
+                                                             "checkpoint_rows":  "1",
+                                                             "last_source_updated_at":  "2026-02-03T00:00:00.000Z",
+                                                             "checkpoint_batch_id":  "p5_incremental_20260203",
+                                                             "completed_audit_attempts":  "1",
+                                                             "recovered_attempts":  "1",
+                                                             "replay_attempts":  "0",
+                                                             "non_idempotent_attempts":  "0",
+                                                             "historical_gold_snapshot":  "p3_v2_valid",
+                                                             "historical_gold_version":  "2",
+                                                             "historical_gold_rows":  "5269",
+                                                             "historical_gold_units":  "13176",
+                                                             "historical_gold_source_amount":  "5265860.00"
+                                                         }
+                                          },
+                                          {
+                                              "stage":  "after_replay",
+                                              "statement_id":  "01f1de99-b0c2-1e52-9e13-2c7fd3d4eeea",
+                                              "result":  {
+                                                             "data_rows":  "5274",
+                                                             "distinct_business_keys":  "5274",
+                                                             "total_units":  "13192",
+                                                             "total_source_amount":  "5270890.00",
+                                                             "batch_rows_applied":  "7",
+                                                             "checkpoint_rows":  "1",
+                                                             "last_source_updated_at":  "2026-02-03T00:00:00.000Z",
+                                                             "checkpoint_batch_id":  "p5_incremental_20260203",
+                                                             "completed_audit_attempts":  "2",
+                                                             "recovered_attempts":  "1",
+                                                             "replay_attempts":  "1",
+                                                             "non_idempotent_attempts":  "0",
+                                                             "historical_gold_snapshot":  "p3_v2_valid",
+                                                             "historical_gold_version":  "2",
+                                                             "historical_gold_rows":  "5269",
+                                                             "historical_gold_units":  "13176",
+                                                             "historical_gold_source_amount":  "5265860.00"
+                                                         }
+                                          }
+                                      ],
+    "delta_history_statement_id":  "01f1de99-c9de-13c8-96cc-2b491a23e957",
+    "delta_merge_history":  [
+                                {
+                                    "version":  1,
+                                    "timestamp":  "2026-11-12T13:00:10.000Z",
+                                    "inserted":  5,
+                                    "updated":  2,
+                                    "files_added":  6,
+                                    "files_removed":  0,
+                                    "source_rows":  7
+                                },
+                                {
+                                    "version":  2,
+                                    "timestamp":  "2026-11-12T13:02:53.000Z",
+                                    "inserted":  0,
+                                    "updated":  0,
+                                    "files_added":  0,
+                                    "files_removed":  0,
+                                    "source_rows":  7
+                                },
+                                {
+                                    "version":  3,
+                                    "timestamp":  "2026-11-12T13:04:31.000Z",
+                                    "inserted":  0,
+                                    "updated":  0,
+                                    "files_added":  0,
+                                    "files_removed":  0,
+                                    "source_rows":  7
+                                }
+                            ],
+    "final_p5_rows":  5274,
+    "final_business_key_duplicates":  0,
+    "final_units":  13192,
+    "final_source_amount":  "5270890.00",
+    "final_checkpoint":  "2026-02-03 00:00:00",
+    "final_completed_audits":  2,
+    "gold_snapshot_untouched":  "p3_v2_valid",
+    "limitations":  [
+                        "One intentionally FAILED run has two failed task attempts: first committed and injected crash, platform retried and safeguard refused duplicate injection",
+                        "Recovery and replay caused zero data-level inserts or updates; each still has its own Delta transaction-history version",
+                        "Failed Job evidence lives in Databricks Jobs history; completion audit is deliberately absent before recovery",
+                        "The P5 checkpoint and audit are separate Delta table transactions, not cross-table ACID",
+                        "This is a deterministic synthetic batch with manual controlled runs, not a live CDC source or automatic crash-repair service",
+                        "No original order, payment, ad, customer, historical Gold, Bronze or Silver tables were modified by the lab",
+                        "Source amount includes all synthetic statuses and is not recognized revenue"
+                    ]
+}
