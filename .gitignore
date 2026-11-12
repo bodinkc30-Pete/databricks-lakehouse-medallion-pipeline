@@ -71,3 +71,6 @@ htmlcov/
 
 # Verified, sanitized Phase4 monitoring statement / Jobs evidence.
 !docs/evidence/phase4_monitoring_alert_replay_validated.json
+
+# Sanitized verified synthetic P5 crash/recovery Databricks evidence only.
+!docs/evidence/p5_crash_after_merge_recovery_validated.json
